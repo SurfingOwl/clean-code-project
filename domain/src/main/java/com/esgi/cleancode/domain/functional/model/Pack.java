@@ -1,5 +1,5 @@
 package com.esgi.cleancode.domain.functional.model;
 
-public class Pack {
+public interface Pack {
 
 }
