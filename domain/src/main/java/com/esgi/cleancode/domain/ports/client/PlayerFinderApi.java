@@ -5,8 +5,10 @@ import com.esgi.cleancode.domain.functional.model.Player;
 
 import io.vavr.control.Either;
 
-public interface PlayerCreatorApi {
+public interface PlayerFinderApi {
     
-    Either<ApplicationError, Player> create(Player player);
+    Either<ApplicationError, Player> inspect(Player player);
 
+    Either<ApplicationError, Iterable<Player>> search();
+    
 }
