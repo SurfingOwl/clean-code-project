@@ -1,16 +1,17 @@
 package com.esgi.cleancode.domain.functional.model;
 
+import java.util.UUID;
+
 import lombok.Builder;
 import lombok.Builder.Default;
-import lombok.Generated;
 import lombok.Value;
 
 @Value
 @Builder
 public class Player {
     
-    @Generated
-    long id;
+    @Default
+    UUID id = UUID.randomUUID();
     String name;
     @Default
     int balance = 4;

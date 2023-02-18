@@ -1,15 +1,18 @@
 package com.esgi.cleancode.domain.functional.model;
 
-import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
-import lombok.Generated;
+import lombok.Builder;
 import lombok.Value;
+import lombok.Builder.Default;
 
 @Value
+@Builder
 public class Battle {
     
-    @Generated
-    long id;
-    Map<Player, Player> fighters;
+    @Default
+    UUID id = UUID.randomUUID();
+    Set<Player> fighters;
     
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.esgi.cleancode.client.rest.dto.PlayerCreationDto;
-import com.esgi.cleancode.domain.ports.client.PlayerApi;
+import com.esgi.cleancode.domain.ports.client.PlayerCreatorApi;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/player")
 public class PlayerResource {
 
-    private final PlayerApi PlayerApi;
+    private final PlayerCreatorApi PlayerCreatorApi;
 
     @PostMapping
     ResponseEntity<Object> createPlayer(@RequestBody PlayerCreationDto dto) {

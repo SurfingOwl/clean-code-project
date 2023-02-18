@@ -3,34 +3,34 @@ package com.esgi.cleancode.server.mongo.adapter;
 import java.util.UUID;
 
 import com.esgi.cleancode.domain.ApplicationError;
-import com.esgi.cleancode.domain.functional.model.Player;
-import com.esgi.cleancode.domain.ports.server.PlayerPersistenceSpi;
+import com.esgi.cleancode.domain.functional.model.Pack;
+import com.esgi.cleancode.domain.ports.server.PackPersistenceSpi;
 
 import io.vavr.control.Either;
 import io.vavr.control.Option;
 
-public class PlayerMongoDbAdapter implements PlayerPersistenceSpi {
+public class PackMongoDbAdapter implements PackPersistenceSpi {
 
     @Override
-    public Either<ApplicationError, Player> save(Player o) {
+    public Either<ApplicationError, Pack> save(Pack o) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Option<Player> findById(UUID id) {
+    public Either<ApplicationError, Iterable<Pack>> saveInBatch(Iterable<Pack> oList) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Either<ApplicationError, Iterable<Player>> saveInBatch(Iterable<Player> oList) {
+    public Option<Pack> findById(UUID id) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Option<Iterable<Player>> findAll() {
+    public Option<Iterable<Pack>> findAll() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -45,5 +45,6 @@ public class PlayerMongoDbAdapter implements PlayerPersistenceSpi {
     public Either<ApplicationError, Void> deleteInBatch(Iterable<UUID> ids) {
         // TODO Auto-generated method stub
         return null;
-    }    
+    }
+    
 }
