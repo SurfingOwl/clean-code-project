@@ -4,6 +4,4 @@ import java.util.UUID;
 
 import com.esgi.cleancode.domain.functional.model.Player;
 
-public interface PlayerPersistenceSpi extends PersistenceSpi<Player, UUID> {
-    
-}
+public interface PlayerPersistenceSpi extends PersistenceSpi<Player, UUID> {  }

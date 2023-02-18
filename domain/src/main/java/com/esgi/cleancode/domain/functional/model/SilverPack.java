@@ -1,19 +1,20 @@
 package com.esgi.cleancode.domain.functional.model;
 
 import java.util.Map;
+import java.util.UUID;
 
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 
 import lombok.Builder;
-import lombok.Generated;
+import lombok.Builder.Default;
 import lombok.Value;
 
 @Value
 @Builder
 public class SilverPack implements Pack {
     
-    @Generated
-    long id;
+    @Default
+    UUID id = UUID.randomUUID();
     int price = 1;
     int cardNumber = 3;
     Map<RarityEnum, Double> dropChances = Map.of(

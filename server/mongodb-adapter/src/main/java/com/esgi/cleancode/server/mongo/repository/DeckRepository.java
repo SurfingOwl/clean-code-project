@@ -2,46 +2,48 @@ package com.esgi.cleancode.server.mongo.repository;
 
 import java.util.List;
 import java.util.UUID;
-import com.esgi.cleancode.server.mongo.entity.PlayerEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.esgi.cleancode.server.mongo.entity.DeckEntity;
+
 @Repository
-public interface PlayerRepository extends JpaRepository<PlayerEntity, UUID> {
+public interface DeckRepository extends JpaRepository<DeckEntity, UUID> {
 
     @Override
-    default PlayerEntity getOne(UUID id) {
+    default DeckEntity getOne(UUID id) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    default List<PlayerEntity> findAll() {
+    default List<DeckEntity> findAll() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    default <S extends PlayerEntity> S save(S entity) {
+    default <S extends DeckEntity> S save(S entity) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    default <S extends PlayerEntity> List<S> saveAll(Iterable<S> entities) {
+    default <S extends DeckEntity> List<S> saveAll(Iterable<S> entities) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    default void delete(PlayerEntity entity) {
+    default void delete(DeckEntity entity) {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    default void deleteInBatch(Iterable<PlayerEntity> entities) {
+    default void deleteInBatch(Iterable<DeckEntity> entities) {
         // TODO Auto-generated method stub
+        
     }
 }

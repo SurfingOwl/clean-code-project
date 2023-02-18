@@ -1,18 +1,30 @@
 package com.esgi.cleancode.server.mongo.entity;
 
 import javax.persistence.*;
-import lombok.*;
 
-import static javax.persistence.CascadeType.ALL;
+import lombok.*;
+import lombok.EqualsAndHashCode.Include;
+
+import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
 @Builder
-// @NoArgsConstructor TODO à réintégrer lors de l'implémentation
-// @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table()
+@Table(name="PLAYER")
 public class PlayerEntity {
     
+    @Id
+    @Include
+    private UUID id;
+
+    private String name;
+
+    private int balance;
+    
+    @OneToOne
+    private DeckEntity deck;
 }
