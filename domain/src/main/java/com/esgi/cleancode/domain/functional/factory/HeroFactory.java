@@ -10,7 +10,9 @@ import com.esgi.cleancode.domain.functional.model.Tank;
 
 public class HeroFactory {
 
-    static Hero buildHero(String name, RarityEnum rarity, SpecialityEnum speciality) throws HeroFactoryException {
+    // TODO buildFromHero
+
+    public static Hero createHero(String name, RarityEnum rarity, SpecialityEnum speciality) throws HeroFactoryException {
         switch(speciality) {
             case ASSASSIN:
                 return Assassin.builder()
