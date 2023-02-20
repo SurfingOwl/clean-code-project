@@ -1,6 +1,8 @@
 package com.esgi.cleancode.domain.functional.service;
 
 import com.esgi.cleancode.domain.ApplicationError;
+import com.esgi.cleancode.domain.functional.errors.HeroFactoryException;
+import com.esgi.cleancode.domain.functional.factory.HeroFactory;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.ports.server.HeroPersistenceSpi;
 
@@ -12,13 +14,33 @@ public class HeroExperienceHandler {
     
     private final HeroPersistenceSpi spi; 
 
-    Either<ApplicationError, Hero> experienceUp(Hero hero) {
-        // TODO
-        return null;
+    Either<ApplicationError, Hero> experienceUp(Hero hero) throws HeroFactoryException {
+        return spi.save(
+            HeroFactory.fromHero(
+            hero.getId(),
+            hero.getName(),
+            hero.getHealthPoint(),
+            hero.getPower(),
+            hero.getArmor(),
+            hero.getExperiencePoints() + 1,
+            hero.getLevel(),
+            hero.getRarity(),
+            hero.getSpeciality())
+        );
     }
 
-    Either<ApplicationError, Hero> levelUp(Hero hero) {
-        // TODO
-        return null;
+    Either<ApplicationError, Hero> levelUp(Hero hero) throws HeroFactoryException {
+        return spi.save(
+            HeroFactory.fromHero(
+            hero.getId(),
+            hero.getName(),
+            HeroFactory.getRarityBonus(hero.getHealthPoint(), hero.getRarity()),
+            HeroFactory.getRarityBonus(hero.getPower(), hero.getRarity()),
+            HeroFactory.getRarityBonus(hero.getArmor(), hero.getRarity()),
+            0,
+            hero.getLevel() + 1,
+            hero.getRarity(),
+            hero.getSpeciality())
+        );
     }
 }
