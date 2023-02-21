@@ -1,6 +1,5 @@
 package com.esgi.cleancode.server.mongo.entity;
 
-import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -8,6 +7,7 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
 
+import io.vavr.collection.Map;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -30,5 +30,5 @@ public class BattleEntity {
     @Include
     private UUID id;
 
-    private Set<PlayerEntity> figthers;
+    private Map<HeroEntity, HeroEntity> figthers;
 }

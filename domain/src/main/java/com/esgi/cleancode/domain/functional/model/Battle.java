@@ -1,8 +1,8 @@
 package com.esgi.cleancode.domain.functional.model;
 
-import java.util.Set;
 import java.util.UUID;
 
+import io.vavr.collection.Map;
 import lombok.Builder;
 import lombok.Value;
 import lombok.Builder.Default;
@@ -13,6 +13,6 @@ public class Battle {
     
     @Default
     UUID id = UUID.randomUUID();
-    Set<Player> fighters;
+    Map<Hero, Hero> fighters;
     
 }

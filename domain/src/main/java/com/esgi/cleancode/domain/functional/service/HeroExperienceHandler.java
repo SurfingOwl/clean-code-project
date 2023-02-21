@@ -34,9 +34,9 @@ public class HeroExperienceHandler {
             HeroFactory.fromHero(
             hero.getId(),
             hero.getName(),
-            HeroFactory.getRarityBonus(hero.getHealthPoint(), hero.getRarity()),
-            HeroFactory.getRarityBonus(hero.getPower(), hero.getRarity()),
-            HeroFactory.getRarityBonus(hero.getArmor(), hero.getRarity()),
+            HeroFactory.applyRarityBonus(hero.getHealthPoint(), hero.getRarity()),
+            HeroFactory.applyRarityBonus(hero.getPower(), hero.getRarity()),
+            HeroFactory.applyRarityBonus(hero.getArmor(), hero.getRarity()),
             0,
             hero.getLevel() + 1,
             hero.getRarity(),
