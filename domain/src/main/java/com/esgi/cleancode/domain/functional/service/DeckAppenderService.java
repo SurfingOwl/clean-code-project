@@ -17,8 +17,12 @@ public class DeckAppenderService implements DeckAppenderApi {
 
     @Override
     public Either<ApplicationError, Deck> add(Deck deck, List<Hero> heroes) {
-        // TODO Auto-generated method stub
-        return null;
+        return spi.save(
+            Deck.builder()
+            .id(deck.getId())
+            .heroes(List.ofAll(deck.getHeroes().appendAll(heroes)))
+            .build()
+        );
     }
     
 }

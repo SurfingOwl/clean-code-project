@@ -8,7 +8,7 @@ import io.vavr.control.Either;
 
 public interface PlayerFinderApi {
     
-    Either<ApplicationError, Player> inspect(Player player);
+    Either<ApplicationError, Player> find(Player player);
 
     Either<ApplicationError, List<Player>> search();
     

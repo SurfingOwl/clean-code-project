@@ -7,6 +7,6 @@ import io.vavr.control.Either;
 
 public interface PlayerCreatorApi {
     
-    Either<ApplicationError, Player> create(Player player);
+    Either<ApplicationError, Player> create(String name);
 
 }

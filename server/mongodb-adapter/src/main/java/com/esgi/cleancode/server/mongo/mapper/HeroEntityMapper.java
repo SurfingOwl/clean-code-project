@@ -49,7 +49,7 @@ public interface HeroEntityMapper {
                     .speciality(entity.getSpeciality())
                     .build();
             default:
-                return null; // TODO NOT CLEAN AT ALL
+                return null; // TODO NOT CLEAN
         }
     }
 

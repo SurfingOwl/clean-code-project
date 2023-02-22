@@ -2,10 +2,8 @@ package com.esgi.cleancode.domain.functional.factory;
 
 import java.util.UUID;
 
-import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 import com.esgi.cleancode.domain.functional.enums.SpecialityEnum;
-import com.esgi.cleancode.domain.functional.errors.HeroFactoryException;
 import com.esgi.cleancode.domain.functional.model.Assassin;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.model.Mage;
@@ -64,7 +62,7 @@ public class HeroFactory {
         }
     }
 
-    public static Hero createHero(String name, RarityEnum rarity, SpecialityEnum speciality) throws HeroFactoryException {
+    public static Hero createHero(String name, RarityEnum rarity, SpecialityEnum speciality) {
         switch(speciality) {
             case ASSASSIN:
                 return Assassin.builder()
@@ -88,11 +86,11 @@ public class HeroFactory {
                     .armor(applyRarityBonus(20, rarity))
                     .build();
             default:
-                throw new HeroFactoryException("Speciality Error");
+                return null; // TODO NOT CLEAN
         }
     }
 
-    public static double applyRarityBonus(double d, RarityEnum rarity) throws HeroFactoryException {
+    public static double applyRarityBonus(double d, RarityEnum rarity) {
         switch(rarity) {
             case COMMON:
                 return d;
@@ -101,7 +99,7 @@ public class HeroFactory {
             case LEGENDARY:
                 return d + d*0.2;
             default:
-                throw new HeroFactoryException("Rarity Error");
+                return 0; // TODO NOT CLEAN
         }
     }
 }

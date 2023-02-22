@@ -8,7 +8,7 @@ import io.vavr.control.Either;
 
 public interface HeroFinderApi {
     
-    Either<ApplicationError, Hero> inspect(Hero hero);
+    Either<ApplicationError, Hero> find(Hero hero);
 
     Either<ApplicationError, List<Hero>> search();
 
