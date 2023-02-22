@@ -5,6 +5,7 @@ import com.esgi.cleancode.domain.functional.model.Player;
 import com.esgi.cleancode.domain.ports.client.PlayerFinderApi;
 import com.esgi.cleancode.domain.ports.server.PlayerPersistenceSpi;
 
+import io.vavr.collection.List;
 import io.vavr.control.Either;
 import lombok.AllArgsConstructor;
 
@@ -20,7 +21,7 @@ public class PlayerFinderService implements PlayerFinderApi {
     }
 
     @Override
-    public Either<ApplicationError, Iterable<Player>> search() {
+    public Either<ApplicationError, List<Player>> search() {
         // TODO Auto-generated method stub
         return null;
     }

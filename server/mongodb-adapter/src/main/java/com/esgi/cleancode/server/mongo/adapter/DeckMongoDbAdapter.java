@@ -6,6 +6,7 @@ import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Deck;
 import com.esgi.cleancode.domain.ports.server.DeckPersistenceSpi;
 
+import io.vavr.collection.List;
 import io.vavr.control.Either;
 import io.vavr.control.Option;
 
@@ -18,7 +19,7 @@ public class DeckMongoDbAdapter implements DeckPersistenceSpi {
     }
 
     @Override
-    public Either<ApplicationError, Iterable<Deck>> saveInBatch(Iterable<Deck> oList) {
+    public Either<ApplicationError, List<Deck>> saveInBatch(List<Deck> oList) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -30,7 +31,7 @@ public class DeckMongoDbAdapter implements DeckPersistenceSpi {
     }
 
     @Override
-    public Option<Iterable<Deck>> findAll() {
+    public Option<List<Deck>> findAll() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -42,7 +43,7 @@ public class DeckMongoDbAdapter implements DeckPersistenceSpi {
     }
 
     @Override
-    public Either<ApplicationError, Void> deleteInBatch(Iterable<UUID> ids) {
+    public Either<ApplicationError, Void> deleteInBatch(List<UUID> ids) {
         // TODO Auto-generated method stub
         return null;
     }

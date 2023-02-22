@@ -6,6 +6,7 @@ import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.ports.server.HeroPersistenceSpi;
 
+import io.vavr.collection.List;
 import io.vavr.control.Either;
 import io.vavr.control.Option;
 
@@ -18,7 +19,7 @@ public class HeroMongoDbAdapter implements HeroPersistenceSpi {
     }
 
     @Override
-    public Either<ApplicationError, Iterable<Hero>> saveInBatch(Iterable<Hero> oList) {
+    public Either<ApplicationError, List<Hero>> saveInBatch(List<Hero> oList) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -30,7 +31,7 @@ public class HeroMongoDbAdapter implements HeroPersistenceSpi {
     }
 
     @Override
-    public Option<Iterable<Hero>> findAll() {
+    public Option<List<Hero>> findAll() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -42,7 +43,7 @@ public class HeroMongoDbAdapter implements HeroPersistenceSpi {
     }
 
     @Override
-    public Either<ApplicationError, Void> deleteInBatch(Iterable<UUID> ids) {
+    public Either<ApplicationError, Void> deleteInBatch(List<UUID> ids) {
         // TODO Auto-generated method stub
         return null;
     }
