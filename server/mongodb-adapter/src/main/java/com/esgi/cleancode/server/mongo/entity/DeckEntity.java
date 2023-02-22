@@ -1,6 +1,5 @@
 package com.esgi.cleancode.server.mongo.entity;
 
-import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -9,6 +8,7 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
 
+import io.vavr.collection.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

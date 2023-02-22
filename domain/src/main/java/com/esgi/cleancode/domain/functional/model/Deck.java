@@ -1,8 +1,8 @@
 package com.esgi.cleancode.domain.functional.model;
 
-import java.util.List;
 import java.util.UUID;
 
+import io.vavr.collection.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Builder.Default;

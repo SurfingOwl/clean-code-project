@@ -1,12 +1,12 @@
 package com.esgi.cleancode.server.mongo.mapper;
 
-import java.util.List;
-
 import com.esgi.cleancode.domain.functional.model.Assassin;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.model.Mage;
 import com.esgi.cleancode.domain.functional.model.Tank;
 import com.esgi.cleancode.server.mongo.entity.HeroEntity;
+
+import io.vavr.collection.List;
 
 public interface HeroEntityMapper {
 
@@ -56,7 +56,7 @@ public interface HeroEntityMapper {
     public static List<Hero> listToDomain(List<HeroEntity> entities) {
         List<Hero> toDomain = List.of();
         entities.forEach(entity -> {
-            toDomain.add(toDomain(entity));
+            toDomain.append(toDomain(entity));
         });
         return toDomain;
     }
@@ -78,7 +78,7 @@ public interface HeroEntityMapper {
     public static List<HeroEntity> listFromDomain(List<Hero> heroes) {
         List<HeroEntity> fromDomain = List.of();
         heroes.forEach(hero -> {
-            fromDomain.add(fromDomain(hero));
+            fromDomain.append(fromDomain(hero));
         });
         return fromDomain;
     }
