@@ -5,6 +5,7 @@ import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.ports.client.HeroFinderApi;
 import com.esgi.cleancode.domain.ports.server.HeroPersistenceSpi;
 
+import io.vavr.collection.List;
 import io.vavr.control.Either;
 import lombok.AllArgsConstructor;
 
@@ -20,7 +21,7 @@ public class HeroFinderService implements HeroFinderApi {
     }
 
     @Override
-    public Either<ApplicationError, Iterable<Hero>> search() {
+    public Either<ApplicationError, List<Hero>> search() {
         // TODO Auto-generated method stub
         return null;
     }
