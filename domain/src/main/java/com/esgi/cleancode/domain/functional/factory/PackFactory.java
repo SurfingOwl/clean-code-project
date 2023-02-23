@@ -7,7 +7,7 @@ import com.esgi.cleancode.domain.functional.model.SilverPack;
 
 public class PackFactory {
     
-    static Pack buildPack(PackEnum pack) {
+    public static Pack buildPack(PackEnum pack) {
         switch(pack) {
             case DIAMOND:
                 return DiamondPack.builder().build();

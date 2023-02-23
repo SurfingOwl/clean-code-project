@@ -3,6 +3,7 @@ package com.esgi.cleancode.domain.functional.model;
 import java.util.Map;
 import java.util.UUID;
 
+import com.esgi.cleancode.domain.functional.enums.PackEnum;
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 
 public interface Pack { 
@@ -11,5 +12,5 @@ public interface Pack {
     int getPrice();
     int getCardNumber();
     Map<RarityEnum, Double> getDropChances();
-    
+    PackEnum getPackRarity();
  }

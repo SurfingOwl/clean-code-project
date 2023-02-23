@@ -3,6 +3,7 @@ package com.esgi.cleancode.domain.functional.model;
 import java.util.Map;
 import java.util.UUID;
 
+import com.esgi.cleancode.domain.functional.enums.PackEnum;
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 
 import lombok.Builder;
@@ -17,10 +18,10 @@ public class DiamondPack implements Pack {
     UUID id = UUID.randomUUID();
     int price = 2;
     int cardNumber = 5;
+    PackEnum packRarity;
     Map<RarityEnum, Double> dropChances = Map.of(
         RarityEnum.COMMON, 0.5,
         RarityEnum.RARE, 0.35,
         RarityEnum.LEGENDARY, 0.15
         );
-
 }
