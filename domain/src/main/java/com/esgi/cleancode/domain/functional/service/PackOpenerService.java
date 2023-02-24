@@ -10,7 +10,6 @@ import com.esgi.cleancode.domain.functional.service.validation.PlayerBalanceVali
 import com.esgi.cleancode.domain.ports.client.PackOpenerApi;
 import com.esgi.cleancode.domain.ports.server.PlayerPersistenceSpi;
 
-import io.vavr.collection.Array;
 import io.vavr.collection.List;
 import io.vavr.control.Either;
 import lombok.AllArgsConstructor;
@@ -38,9 +37,10 @@ public class PackOpenerService implements PackOpenerApi {
 
     private List<Hero> getHeroesFromPack(PackEnum rarity) {
         Pack pack = PackFactory.buildPack(rarity);
-        var heroes = new Array();
+        var heroes = List.empty();
+        // Use Math.random() to get hero depending on drop chance
         for (int i = 0; i < pack.getCardNumber(); i++) {
-            
+            heroes.push(pack.getDropChances().get(rarity));
         }
     }
     
