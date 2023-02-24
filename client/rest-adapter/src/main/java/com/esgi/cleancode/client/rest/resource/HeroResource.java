@@ -8,30 +8,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.esgi.cleancode.client.rest.dto.PlayerCreationDto;
-import com.esgi.cleancode.domain.ports.client.PlayerCreatorApi;
+import com.esgi.cleancode.client.rest.dto.HeroCreationDto;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/player")
-public class PlayerResource {
-
-    private final PlayerCreatorApi PlayerCreatorApi;
-
+@RequestMapping("/Hero")
+public class HeroResource {
+    
     @GetMapping
-    ResponseEntity<Object> getAllPlayers() {
+    ResponseEntity<Object> searchAllHeroes() {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("{playerId}")
-    ResponseEntity<Object> getPlayer(@PathVariable String playerId) {
+    @GetMapping("{heroId}")
+    ResponseEntity<Object> findOneHero(@PathVariable String heroId) {
         return ResponseEntity.ok().build();
     }
 
     @PostMapping
-    ResponseEntity<Object> createPlayer(@RequestBody PlayerCreationDto dto) {
+    ResponseEntity<Object> createHero(@RequestBody HeroCreationDto heroCreationDto) {
         return ResponseEntity.ok().build();
     }
 }

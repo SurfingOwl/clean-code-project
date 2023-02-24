@@ -8,30 +8,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.esgi.cleancode.client.rest.dto.PlayerCreationDto;
-import com.esgi.cleancode.domain.ports.client.PlayerCreatorApi;
+import com.esgi.cleancode.client.rest.dto.AddHeroToDeckDto;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/player")
-public class PlayerResource {
-
-    private final PlayerCreatorApi PlayerCreatorApi;
-
-    @GetMapping
-    ResponseEntity<Object> getAllPlayers() {
+@RequestMapping("/deck")
+public class DeckResource {
+    
+    @GetMapping("{deckId}")
+    ResponseEntity<Object> inspectDeck(@PathVariable String deckId) {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("{playerId}")
-    ResponseEntity<Object> getPlayer(@PathVariable String playerId) {
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping
-    ResponseEntity<Object> createPlayer(@RequestBody PlayerCreationDto dto) {
+    @PostMapping("{deckId}")
+    ResponseEntity<Object> addToDeck(@PathVariable String deckId, @RequestBody AddHeroToDeckDto addHeroToDeckDto) {
         return ResponseEntity.ok().build();
     }
 }
