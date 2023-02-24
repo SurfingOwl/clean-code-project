@@ -1,23 +1,22 @@
 package com.esgi.cleancode.server.mongo.mapper;
 
-import java.util.Set;
-
 import com.esgi.cleancode.domain.functional.model.Battle;
 import com.esgi.cleancode.server.mongo.entity.BattleEntity;
 
+import io.vavr.collection.HashMap;
 public interface BattleEntityMapper {
     
     static Battle toDomain(BattleEntity entity) {
         return Battle.builder()
             .id(entity.getId())
-            .fighters(Set.of(PlayerEntityMapper.toDomain(entity.getFigthers().iterator().next())))
+            .fighters(HashMap.of(entity.getFigthers().get()).bimap(HeroEntityMapper::toDomain, HeroEntityMapper::toDomain))
             .build();
     }
 
     static BattleEntity fromDomain(Battle battle) {
         return BattleEntity.builder()
         .id(battle.getId())
-        .figthers(Set.of(PlayerEntityMapper.fromDomain(battle.getFighters().iterator().next())))
+        .figthers(null)
         .build();
     }
 }

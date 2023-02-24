@@ -1,9 +1,8 @@
 package com.esgi.cleancode.domain.functional.model;
 
-import java.util.Map;
 import java.util.UUID;
 
-import com.esgi.cleancode.domain.functional.enums.RarityEnum;
+import com.esgi.cleancode.domain.functional.enums.PackEnum;
 
 import lombok.Builder;
 import lombok.Builder.Default;
@@ -17,10 +16,5 @@ public class SilverPack implements Pack {
     UUID id = UUID.randomUUID();
     int price = 1;
     int cardNumber = 3;
-    Map<RarityEnum, Double> dropChances = Map.of(
-        RarityEnum.COMMON, 0.75,
-        RarityEnum.RARE, 0.2,
-        RarityEnum.LEGENDARY, 0.05
-        );
-
+    PackEnum packRarity;
 }

@@ -1,17 +1,16 @@
 package com.esgi.cleancode.server.mongo.mapper;
 
-import java.util.List;
-
-import com.esgi.cleancode.domain.functional.errors.HeroFactoryException;
 import com.esgi.cleancode.domain.functional.model.Assassin;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.model.Mage;
 import com.esgi.cleancode.domain.functional.model.Tank;
 import com.esgi.cleancode.server.mongo.entity.HeroEntity;
 
+import io.vavr.collection.List;
+
 public interface HeroEntityMapper {
 
-    static Hero toDomain(HeroEntity entity) throws HeroFactoryException {
+    public static Hero toDomain(HeroEntity entity) {
         switch(entity.getSpeciality()) {
             case ASSASSIN:
                 return Assassin.builder()
@@ -50,23 +49,19 @@ public interface HeroEntityMapper {
                     .speciality(entity.getSpeciality())
                     .build();
             default:
-                throw new HeroFactoryException("Speciality Error");
+                return null; // TODO NOT CLEAN
         }
     }
 
-    static List<Hero> listToDomain(List<HeroEntity> entities) {
+    public static List<Hero> listToDomain(List<HeroEntity> entities) {
         List<Hero> toDomain = List.of();
         entities.forEach(entity -> {
-            try {
-                toDomain.add(toDomain(entity));
-            } catch (HeroFactoryException e) {
-                e.printStackTrace();
-            }
+            toDomain.append(toDomain(entity));
         });
         return toDomain;
     }
 
-    static HeroEntity fromDomain(Hero hero) {
+    public static HeroEntity fromDomain(Hero hero) {
         return HeroEntity.builder()
             .id(hero.getId())
             .name(hero.getName())
@@ -80,10 +75,10 @@ public interface HeroEntityMapper {
             .build();
     }
 
-    static List<HeroEntity> listFromDomain(List<Hero> heroes) {
+    public static List<HeroEntity> listFromDomain(List<Hero> heroes) {
         List<HeroEntity> fromDomain = List.of();
         heroes.forEach(hero -> {
-            fromDomain.add(fromDomain(hero));
+            fromDomain.append(fromDomain(hero));
         });
         return fromDomain;
     }

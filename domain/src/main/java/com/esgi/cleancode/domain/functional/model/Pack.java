@@ -1,15 +1,13 @@
 package com.esgi.cleancode.domain.functional.model;
 
-import java.util.Map;
 import java.util.UUID;
 
-import com.esgi.cleancode.domain.functional.enums.RarityEnum;
+import com.esgi.cleancode.domain.functional.enums.PackEnum;
 
 public interface Pack { 
 
     UUID getId();
     int getPrice();
     int getCardNumber();
-    Map<RarityEnum, Double> getDropChances();
-    
+    PackEnum getPackRarity();
  }

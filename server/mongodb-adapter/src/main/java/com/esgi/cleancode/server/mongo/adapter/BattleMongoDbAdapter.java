@@ -2,13 +2,19 @@ package com.esgi.cleancode.server.mongo.adapter;
 
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Battle;
 import com.esgi.cleancode.domain.ports.server.BattlePersistenceSpi;
 
+import io.vavr.collection.List;
 import io.vavr.control.Either;
 import io.vavr.control.Option;
+import lombok.RequiredArgsConstructor;
 
+@Service
+@RequiredArgsConstructor
 public class BattleMongoDbAdapter implements BattlePersistenceSpi {
 
     @Override
@@ -18,13 +24,13 @@ public class BattleMongoDbAdapter implements BattlePersistenceSpi {
     }
 
     @Override
-    public Either<ApplicationError, Void> deleteInBatch(Iterable<UUID> ids) {
+    public Either<ApplicationError, Void> deleteInBatch(List<UUID> ids) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Option<Iterable<Battle>> findAll() {
+    public Option<List<Battle>> findAll() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -42,7 +48,7 @@ public class BattleMongoDbAdapter implements BattlePersistenceSpi {
     }
 
     @Override
-    public Either<ApplicationError, Iterable<Battle>> saveInBatch(Iterable<Battle> oList) {
+    public Either<ApplicationError, List<Battle>> saveInBatch(List<Battle> oList) {
         // TODO Auto-generated method stub
         return null;
     }

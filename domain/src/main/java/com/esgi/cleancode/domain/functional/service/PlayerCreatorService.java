@@ -14,9 +14,8 @@ public class PlayerCreatorService implements PlayerCreatorApi {
     private final PlayerPersistenceSpi spi;
 
     @Override
-    public Either<ApplicationError, Player> create(Player player) {
-        // TODO Auto-generated method stub
-        return null;
+    public Either<ApplicationError, Player> create(String name) {
+        return spi.save(Player.builder().name(name).build());
     }
     
 }

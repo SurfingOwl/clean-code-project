@@ -1,8 +1,9 @@
 package com.esgi.cleancode.domain.functional.factory;
 
+import java.util.UUID;
+
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 import com.esgi.cleancode.domain.functional.enums.SpecialityEnum;
-import com.esgi.cleancode.domain.functional.errors.HeroFactoryException;
 import com.esgi.cleancode.domain.functional.model.Assassin;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.model.Mage;
@@ -10,46 +11,95 @@ import com.esgi.cleancode.domain.functional.model.Tank;
 
 public class HeroFactory {
 
-    // TODO buildFromHero
-
-    public static Hero createHero(String name, RarityEnum rarity, SpecialityEnum speciality) throws HeroFactoryException {
+    public static Hero fromHero(UUID id,
+                                String name,
+                                Double healthPoint,
+                                Double power,
+                                Double armor,
+                                int experiencePoints,
+                                int level,
+                                RarityEnum rarity,
+                                SpecialityEnum speciality) {
         switch(speciality) {
             case ASSASSIN:
                 return Assassin.builder()
-                .name(name)
-                .healthPoint(getRarityBonus(800, rarity))
-                .power(getRarityBonus(200, rarity))
-                .armor(getRarityBonus(5, rarity))
-                .build();
+                    .id(id)
+                    .name(name)
+                    .healthPoint(healthPoint)
+                    .power(power)
+                    .armor(armor)
+                    .experiencePoints(experiencePoints)
+                    .level(level)
+                    .rarity(rarity)
+                    .speciality(speciality)
+                    .build();
             case MAGE:
                 return Mage.builder()
-                .name(name)
-                .healthPoint(getRarityBonus(700, rarity))
-                .power(getRarityBonus(150, rarity))
-                .armor(getRarityBonus(10, rarity))
-                .build();
+                    .id(id)
+                    .name(name)
+                    .healthPoint(healthPoint)
+                    .power(power)
+                    .armor(armor)
+                    .experiencePoints(experiencePoints)
+                    .level(level)
+                    .rarity(rarity)
+                    .speciality(speciality)
+                    .build();
             case TANK:
                 return Tank.builder()
-                .name(name)
-                .healthPoint(getRarityBonus(1000, rarity))
-                .power(getRarityBonus(100, rarity))
-                .armor(getRarityBonus(20, rarity))
-                .build();
+                    .id(id)
+                    .name(name)
+                    .healthPoint(healthPoint)
+                    .power(power)
+                    .armor(armor)
+                    .experiencePoints(experiencePoints)
+                    .level(level)
+                    .rarity(rarity)
+                    .speciality(speciality)
+                    .build();
             default:
-                throw new HeroFactoryException("Speciality Error");
+                return null; // TODO NOT CLEAN
         }
     }
 
-    private static double getRarityBonus(int value, RarityEnum rarity) throws HeroFactoryException {
+    public static Hero createHero(String name, RarityEnum rarity, SpecialityEnum speciality) {
+        switch(speciality) {
+            case ASSASSIN:
+                return Assassin.builder()
+                    .name(name)
+                    .healthPoint(applyRarityBonus(800, rarity))
+                    .power(applyRarityBonus(200, rarity))
+                    .armor(applyRarityBonus(5, rarity))
+                    .build();
+            case MAGE:
+                return Mage.builder()
+                    .name(name)
+                    .healthPoint(applyRarityBonus(700, rarity))
+                    .power(applyRarityBonus(150, rarity))
+                    .armor(applyRarityBonus(10, rarity))
+                    .build();
+            case TANK:
+                return Tank.builder()
+                    .name(name)
+                    .healthPoint(applyRarityBonus(1000, rarity))
+                    .power(applyRarityBonus(100, rarity))
+                    .armor(applyRarityBonus(20, rarity))
+                    .build();
+            default:
+                return null; // TODO NOT CLEAN
+        }
+    }
+
+    public static double applyRarityBonus(double d, RarityEnum rarity) {
         switch(rarity) {
             case COMMON:
-                return value;
+                return d;
             case RARE:
-                return value + value*0.1;
+                return d + d*0.1;
             case LEGENDARY:
-                return value + value*0.2;
+                return d + d*0.2;
             default:
-                throw new HeroFactoryException("Rarity Error");
+                return 0; // TODO NOT CLEAN
         }
     }
 }

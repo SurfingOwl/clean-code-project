@@ -2,13 +2,19 @@ package com.esgi.cleancode.server.mongo.adapter;
 
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Player;
 import com.esgi.cleancode.domain.ports.server.PlayerPersistenceSpi;
 
+import io.vavr.collection.List;
 import io.vavr.control.Either;
 import io.vavr.control.Option;
+import lombok.RequiredArgsConstructor;
 
+@Service
+@RequiredArgsConstructor
 public class PlayerMongoDbAdapter implements PlayerPersistenceSpi {
 
     @Override
@@ -24,13 +30,13 @@ public class PlayerMongoDbAdapter implements PlayerPersistenceSpi {
     }
 
     @Override
-    public Either<ApplicationError, Iterable<Player>> saveInBatch(Iterable<Player> oList) {
+    public Either<ApplicationError, List<Player>> saveInBatch(List<Player> oList) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Option<Iterable<Player>> findAll() {
+    public Option<List<Player>> findAll() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -42,7 +48,7 @@ public class PlayerMongoDbAdapter implements PlayerPersistenceSpi {
     }
 
     @Override
-    public Either<ApplicationError, Void> deleteInBatch(Iterable<UUID> ids) {
+    public Either<ApplicationError, Void> deleteInBatch(List<UUID> ids) {
         // TODO Auto-generated method stub
         return null;
     }    
