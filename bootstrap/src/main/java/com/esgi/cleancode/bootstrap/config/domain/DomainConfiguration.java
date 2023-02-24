@@ -62,8 +62,8 @@ public class DomainConfiguration {
     }
 
     @Bean
-    public PackOpenerApi packOpenerApi(PlayerPersistenceSpi spi, DeckAppenderService deckAppenderService) {
-        return new PackOpenerService(spi, deckAppenderService);
+    public PackOpenerApi packOpenerApi(HeroFinderService heroFinderService, DeckAppenderService deckAppenderService) {
+        return new PackOpenerService(heroFinderService, deckAppenderService);
     }
 
     @Bean
