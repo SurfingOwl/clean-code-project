@@ -29,3 +29,4 @@ hs_err_pid*
 # Properties
 pom.properties
 bootstrap/target/bootstrap-1.0.0-SNAPSHOT.jar.original
+.vscode/launch.json

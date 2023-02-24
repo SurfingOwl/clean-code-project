@@ -2,6 +2,8 @@ package com.esgi.cleancode.server.mongo.adapter;
 
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.ports.server.HeroPersistenceSpi;
@@ -9,7 +11,10 @@ import com.esgi.cleancode.domain.ports.server.HeroPersistenceSpi;
 import io.vavr.collection.List;
 import io.vavr.control.Either;
 import io.vavr.control.Option;
+import lombok.RequiredArgsConstructor;
 
+@Service
+@RequiredArgsConstructor
 public class HeroMongoDbAdapter implements HeroPersistenceSpi {
 
     @Override
