@@ -42,6 +42,7 @@ public class PackOpenerService implements PackOpenerApi {
         for (int i = 0; i < pack.getCardNumber(); i++) {
             heroes.push(pack.getDropChances().get(rarity));
         }
+        return null;
     }
     
 }
