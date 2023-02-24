@@ -1,10 +1,11 @@
 package com.esgi.cleancode.domain.functional.model;
 
-import java.util.Map;
 import java.util.UUID;
 
 import com.esgi.cleancode.domain.functional.enums.PackEnum;
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
+
+import io.vavr.collection.Map;
 
 public interface Pack { 
 

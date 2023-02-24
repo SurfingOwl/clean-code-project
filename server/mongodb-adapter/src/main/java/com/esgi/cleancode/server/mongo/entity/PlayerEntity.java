@@ -1,20 +1,18 @@
 package com.esgi.cleancode.server.mongo.entity;
 
-import javax.persistence.*;
-
 import lombok.*;
 import lombok.EqualsAndHashCode.Include;
 
 import java.util.UUID;
 
-@Entity
+import org.springframework.data.annotation.Id;
+
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name="PLAYER")
 public class PlayerEntity {
     
     @Id
@@ -25,6 +23,5 @@ public class PlayerEntity {
 
     private int balance;
     
-    @OneToOne
     private DeckEntity deck;
 }

@@ -2,6 +2,7 @@ package com.esgi.cleancode.domain.functional.service;
 
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.enums.PackEnum;
+import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 import com.esgi.cleancode.domain.functional.factory.PackFactory;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.model.Pack;
@@ -40,9 +41,12 @@ public class PackOpenerService implements PackOpenerApi {
         var heroes = List.empty();
         // Use Math.random() to get hero depending on drop chance
         for (int i = 0; i < pack.getCardNumber(); i++) {
-            heroes.push(pack.getDropChances().get(rarity));
+            // heroes.push(pack.getDropChances());
         }
         return null;
     }
     
+    private Hero getHeroWithDropChance(PackEnum rarity) {
+        return null;
+    }
 }
