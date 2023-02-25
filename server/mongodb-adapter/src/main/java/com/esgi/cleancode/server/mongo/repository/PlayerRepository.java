@@ -1,8 +1,9 @@
 package com.esgi.cleancode.server.mongo.repository;
 
-import java.util.List;
 import java.util.UUID;
 import com.esgi.cleancode.server.mongo.entity.PlayerEntity;
+
+import io.vavr.collection.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +25,7 @@ public interface PlayerRepository {
         return null;
     }
 
-    default <S extends PlayerEntity> List<S> saveAll(Iterable<S> entities) {
+    default <S extends PlayerEntity> List<S> saveAll(List<S> entities) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -34,7 +35,7 @@ public interface PlayerRepository {
         
     }
 
-    default void deleteInBatch(Iterable<PlayerEntity> entities) {
+    default void deleteInBatch(List<PlayerEntity> entities) {
         // TODO Auto-generated method stub
     }
 }

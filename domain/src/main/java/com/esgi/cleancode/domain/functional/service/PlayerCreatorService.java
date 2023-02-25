@@ -17,5 +17,10 @@ public class PlayerCreatorService implements PlayerCreatorApi {
     public Either<ApplicationError, Player> create(String name) {
         return spi.save(Player.builder().name(name).build());
     }
+
+    @Override
+    public Either<ApplicationError, Player> update(Player player) {
+        return spi.save(player);
+    }
     
 }

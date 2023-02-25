@@ -2,14 +2,14 @@ package com.esgi.cleancode.client.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import io.vavr.collection.List;
+
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 
 import java.util.UUID;
 
 @JsonAutoDetect(fieldVisibility = ANY)
-public record PlayerDto(
+public record DeckDto(
     UUID id,
-    String name,
-    int balance,
-    DeckDto deck
+    List<HeroDto> heroes
 ) {}

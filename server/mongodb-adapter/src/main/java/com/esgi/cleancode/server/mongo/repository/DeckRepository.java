@@ -1,11 +1,12 @@
 package com.esgi.cleancode.server.mongo.repository;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
 import com.esgi.cleancode.server.mongo.entity.DeckEntity;
+
+import io.vavr.collection.List;
 
 @Repository
 public interface DeckRepository {
@@ -25,7 +26,7 @@ public interface DeckRepository {
         return null;
     }
 
-    default <S extends DeckEntity> List<S> saveAll(Iterable<S> entities) {
+    default <S extends DeckEntity> List<S> saveAll(List<S> entities) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -35,7 +36,7 @@ public interface DeckRepository {
         
     }
 
-    default void deleteInBatch(Iterable<DeckEntity> entities) {
+    default void deleteInBatch(List<DeckEntity> entities) {
         // TODO Auto-generated method stub
         
     }

@@ -1,5 +1,7 @@
 package com.esgi.cleancode.domain.functional.service;
 
+import java.util.UUID;
+
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Player;
 import com.esgi.cleancode.domain.ports.client.PlayerFinderApi;
@@ -17,10 +19,10 @@ public class PlayerFinderService implements PlayerFinderApi {
     private final PlayerPersistenceSpi spi;
 
     @Override
-    public Either<ApplicationError, Player> find(Player player) {
-        return spi.findById(player.getId())
-            .onEmpty(() -> log.error("Could not find player with id {}", player.getId()))
-            .toEither(() -> new ApplicationError("Player finder", null, player, null));
+    public Either<ApplicationError, Player> find(UUID id) {
+        return spi.findById(id)
+            .onEmpty(() -> log.error("Could not find player with id {}", id))
+            .toEither(() -> new ApplicationError("Player finder", null, id, null));
     }
 
     @Override

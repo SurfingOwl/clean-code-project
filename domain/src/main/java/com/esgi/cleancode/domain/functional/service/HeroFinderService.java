@@ -1,5 +1,7 @@
 package com.esgi.cleancode.domain.functional.service;
 
+import java.util.UUID;
+
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.ports.client.HeroFinderApi;
@@ -17,10 +19,10 @@ public class HeroFinderService implements HeroFinderApi {
     private final HeroPersistenceSpi spi;
 
     @Override
-    public Either<ApplicationError, Hero> find(Hero hero) {
-        return spi.findById(hero.getId())
-            .onEmpty(() -> log.error("Could not find hero with id {}", hero.getId()))
-            .toEither(() -> new ApplicationError("Hero finder", null, hero, null));
+    public Either<ApplicationError, Hero> find(UUID id) {
+        return spi.findById(id)
+            .onEmpty(() -> log.error("Could not find hero with id {}", id))
+            .toEither(() -> new ApplicationError("Hero finder", null, id, null));
     }
 
     @Override

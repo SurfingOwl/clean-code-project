@@ -14,18 +14,28 @@ import lombok.extern.slf4j.Slf4j;
 
 import static io.vavr.API.Left;
 
+import java.util.UUID;
+
 @Slf4j
 @AllArgsConstructor
 public class BattleViewerService implements BattleViewerApi {
 
     private final BattlePersistenceSpi spi;
+    private final HeroFinderService heroFinderService;
 
     @Override
-    public Either<ApplicationError, List<Battle>> view(Hero hero) {
+    public Either<ApplicationError, Battle> findById(UUID id) {
+        return spi.findById(id)
+            .onEmpty(() -> log.error("Unable to find battle with id{}", id))
+            .toEither(new ApplicationError("No battle", null, id, null));
+    }
+
+    @Override
+    public Either<ApplicationError, List<Battle>> findByHeroId(UUID id) {
         return spi.findAll()
-            .onEmpty(() -> log.error("Unable to find battles associated with this hero: {}", hero))
-            .fold(() -> Left(new ApplicationError("No battles", null, hero, null)),
-            battles -> getBattleListFromHero(battles, hero));
+            .onEmpty(() -> log.error("Unable to find battles associated with this hero: {}", id))
+            .fold(() -> Left(new ApplicationError("No battles", null, id, null)),
+            battles -> getBattleListFromHero(battles, heroFinderService.find(id).get()));
     }
 
     private Either<ApplicationError, List<Battle>> getBattleListFromHero(List<Battle> battles, Hero hero) {

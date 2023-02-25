@@ -1,11 +1,12 @@
 package com.esgi.cleancode.server.mongo.repository;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
 import com.esgi.cleancode.server.mongo.entity.HeroEntity;
+
+import io.vavr.collection.List;
 
 @Repository
 public interface HeroRepository  {
@@ -25,7 +26,7 @@ public interface HeroRepository  {
         return null;
     }
 
-    default <S extends HeroEntity> List<S> saveAll(Iterable<S> entities) {
+    default <S extends HeroEntity> List<S> saveAll(List<S> entities) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -35,7 +36,7 @@ public interface HeroRepository  {
         
     }
 
-    default void deleteInBatch(Iterable<HeroEntity> entities) {
+    default void deleteInBatch(List<HeroEntity> entities) {
         // TODO Auto-generated method stub
         
     }

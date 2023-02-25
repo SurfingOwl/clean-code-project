@@ -10,10 +10,11 @@ import io.vavr.control.Either;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class HeroExperienceHandler {
+public class HeroExperienceHandler { // Serait sûrement plus propre avec des methods "with" dans le heroFactory
     
     private final HeroPersistenceSpi spi; 
 
+    // withExpUp
     Either<ApplicationError, Hero> experienceUp(Hero hero) throws HeroFactoryException {
         return spi.save(
             HeroFactory.fromHero(
@@ -29,6 +30,7 @@ public class HeroExperienceHandler {
         );
     }
 
+    // withLvlUp
     Either<ApplicationError, Hero> levelUp(Hero hero) throws HeroFactoryException {
         return spi.save(
             HeroFactory.fromHero(
