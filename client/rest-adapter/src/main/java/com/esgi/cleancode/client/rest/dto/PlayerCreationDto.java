@@ -1,3 +1,3 @@
 package com.esgi.cleancode.client.rest.dto;
 
-public record PlayerCreationDto() {}
+public record PlayerCreationDto() {  }

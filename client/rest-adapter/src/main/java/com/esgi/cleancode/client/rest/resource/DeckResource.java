@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.esgi.cleancode.client.rest.dto.AddHeroToDeckDto;
+import com.esgi.cleancode.client.rest.dto.HeroToDeckDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +23,7 @@ public class DeckResource {
     }
 
     @PostMapping("{deckId}")
-    ResponseEntity<Object> addToDeck(@PathVariable String deckId, @RequestBody AddHeroToDeckDto addHeroToDeckDto) {
+    ResponseEntity<Object> addToDeck(@PathVariable String deckId, @RequestBody HeroToDeckDto addHeroToDeckDto) {
         return ResponseEntity.ok().build();
     }
 }

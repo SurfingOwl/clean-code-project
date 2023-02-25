@@ -3,7 +3,6 @@ package com.esgi.cleancode.domain.functional.service;
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 import com.esgi.cleancode.domain.functional.factory.HeroFactory;
-import com.esgi.cleancode.domain.functional.model.Deck;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.model.Pack;
 import com.esgi.cleancode.domain.functional.model.Player;
@@ -23,13 +22,16 @@ public class PackOpenerService implements PackOpenerApi {
 
     private final HeroFinderService heroFinderService;
     private final DeckAppenderService deckAppenderService;
+    private final PlayerCreatorService playerCreatorService;
 
     @Override
-    public Either<ApplicationError, Deck> open(Player player, Pack pack) {
-        return deckAppenderService.add(verifyPlayerBalance(player, pack).get(), getHeroesFromPack(pack));
+    public Either<ApplicationError, Player> open(Player player, Pack pack) {
+        return verifyPlayerBalance(player, pack)
+            .peek(responsePlayer -> calculateNewPlayerBalance(responsePlayer, pack))
+            .peek(responsePlayer -> deckAppenderService.add(responsePlayer.getDeck(), getHeroesFromPack(pack)));
     }
 
-    private Either<ApplicationError, Deck> verifyPlayerBalance(Player player, Pack pack) {
+    private Either<ApplicationError, Player> verifyPlayerBalance(Player player, Pack pack) {
         return PlayerBalanceValidator.validate(player, pack)
             .toEither()
             .peekLeft(error -> log.error("Balance {} is too low to purchase pack {}", player.getBalance(), pack.getPrice()));
@@ -84,5 +86,9 @@ public class PackOpenerService implements PackOpenerApi {
     private Hero selectRandomHeroFromList(List<Hero> heroes) {
         Random randomizer  = new Random();
         return heroes.get(randomizer.nextInt());
+    }
+
+    private Either<ApplicationError, Player> calculateNewPlayerBalance(Player player, Pack pack) {
+        return playerCreatorService.update(player.withBalance(player.getBalance() - pack.getPrice()));
     }
 }

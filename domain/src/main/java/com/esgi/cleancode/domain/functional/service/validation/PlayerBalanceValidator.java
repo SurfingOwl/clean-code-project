@@ -12,9 +12,9 @@ import com.esgi.cleancode.domain.functional.model.Player;
 
 public interface PlayerBalanceValidator {
     
-    static Validation<ApplicationError, Deck> validate(Player player, Pack pack) {
+    static Validation<ApplicationError, Player> validate(Player player, Pack pack) {
         return player.getBalance() > pack.getPrice()
-            ? Valid(player.getDeck())
+            ? Valid(player)
             : Invalid(new ApplicationError("Balance Validator", "Balance inferior to pack price", player, null));
     }
 }

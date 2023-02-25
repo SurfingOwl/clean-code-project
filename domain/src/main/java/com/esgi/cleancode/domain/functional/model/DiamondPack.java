@@ -16,5 +16,5 @@ public class DiamondPack implements Pack {
     UUID id = UUID.randomUUID();
     int price = 2;
     int cardNumber = 5;
-    PackEnum packRarity;
+    PackEnum packRarity = PackEnum.DIAMOND;
 }

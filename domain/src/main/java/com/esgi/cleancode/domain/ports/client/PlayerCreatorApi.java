@@ -9,4 +9,5 @@ public interface PlayerCreatorApi {
     
     Either<ApplicationError, Player> create(String name);
 
+    Either<ApplicationError, Player> update(Player player);
 }

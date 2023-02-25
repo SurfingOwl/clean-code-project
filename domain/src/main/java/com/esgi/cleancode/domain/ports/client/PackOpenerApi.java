@@ -9,6 +9,6 @@ import io.vavr.control.Either;
 
 public interface PackOpenerApi {
     
-    Either<ApplicationError, Deck> open(Player player, Pack pack);
+    Either<ApplicationError, Player> open(Player player, Pack pack);
 
 }

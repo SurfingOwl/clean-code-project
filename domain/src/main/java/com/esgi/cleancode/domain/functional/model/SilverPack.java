@@ -16,5 +16,5 @@ public class SilverPack implements Pack {
     UUID id = UUID.randomUUID();
     int price = 1;
     int cardNumber = 3;
-    PackEnum packRarity;
+    PackEnum packRarity = PackEnum.SILVER;
 }
