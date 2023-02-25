@@ -26,11 +26,11 @@ public class BattleExecutorService implements BattleExecutorApi {
     }
 
     // A mon avis pb ici concernant l'attaquant et l'attaqué
-    // TODO impl turn (& separate from map ?)
+    // 
     @Override
-    public Either<ApplicationError, Battle> attack(Battle battle) {
-        Hero attacker = battle.getFighters().get()._1();
-        Hero attacked = battle.getFighters().get()._2();
+    public Either<ApplicationError, Battle> attack(Battle battle, Hero attacker) {
+
+        Hero attacked = battle.getFighters().get()._2().equals(attacker) ? battle.getFighters().get().swap()._1() : battle.getFighters().get()._2();
 
         return attacked.getHealthPoint() - getDamages(attacker, attacked) > 0 || !battle.getStatus().equals(BattleStatusEnum.DONE)
         ? spi.save(Battle.builder()
