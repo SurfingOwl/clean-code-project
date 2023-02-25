@@ -10,7 +10,6 @@ import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.ports.server.HeroPersistenceSpi;
 import com.esgi.cleancode.server.mongo.mapper.HeroEntityMapper;
 import com.esgi.cleancode.server.mongo.repository.HeroRepository;
-import com.esgi.cleancode.server.mongo.repository.PlayerRepository;
 
 import io.vavr.collection.List;
 import io.vavr.control.Either;

@@ -7,7 +7,10 @@ import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.model.Pack;
 import com.esgi.cleancode.domain.functional.model.Player;
 import com.esgi.cleancode.domain.functional.service.validation.PlayerBalanceValidator;
+import com.esgi.cleancode.domain.ports.client.DeckAppenderApi;
+import com.esgi.cleancode.domain.ports.client.HeroFinderApi;
 import com.esgi.cleancode.domain.ports.client.PackOpenerApi;
+import com.esgi.cleancode.domain.ports.client.PlayerCreatorApi;
 
 import io.vavr.collection.List;
 import io.vavr.control.Either;
@@ -20,9 +23,9 @@ import java.util.Random;
 @AllArgsConstructor
 public class PackOpenerService implements PackOpenerApi {
 
-    private final HeroFinderService heroFinderService;
-    private final DeckAppenderService deckAppenderService;
-    private final PlayerCreatorService playerCreatorService;
+    private final HeroFinderApi heroFinderService;
+    private final DeckAppenderApi deckAppenderService;
+    private final PlayerCreatorApi playerCreatorService;
 
     @Override
     public Either<ApplicationError, Player> open(Player player, Pack pack) {

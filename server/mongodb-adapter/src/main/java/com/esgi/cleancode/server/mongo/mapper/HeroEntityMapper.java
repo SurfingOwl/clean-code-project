@@ -53,12 +53,8 @@ public interface HeroEntityMapper {
         }
     }
 
-    public static List<Hero> listToDomain(List<HeroEntity> entities) {
-        List<Hero> toDomain = List.of();
-        entities.forEach(entity -> {
-            toDomain.append(toDomain(entity));
-        });
-        return toDomain;
+    public static List<Hero> toDomain(List<HeroEntity> entities) {
+        return List.ofAll(entities.map(entity -> toDomain(entity)));   
     }
 
     public static HeroEntity fromDomain(Hero hero) {
@@ -75,11 +71,7 @@ public interface HeroEntityMapper {
             .build();
     }
 
-    public static List<HeroEntity> listFromDomain(List<Hero> heroes) {
-        List<HeroEntity> fromDomain = List.of();
-        heroes.forEach(hero -> {
-            fromDomain.append(fromDomain(hero));
-        });
-        return fromDomain;
+    public static List<HeroEntity> fromDomain(List<Hero> heroes) {
+        return List.ofAll(heroes.map(hero -> fromDomain(hero)));
     }
 }

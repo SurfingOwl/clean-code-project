@@ -1,14 +1,13 @@
 package com.esgi.cleancode.server.mongo.repository;
 
+import java.util.List;
 import java.util.UUID;
+
 import com.esgi.cleancode.server.mongo.entity.PlayerEntity;
 
-import io.vavr.collection.List;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface PlayerRepository {
+public interface PlayerRepository extends MongoRepository<PlayerEntity, UUID> {
 
     default PlayerEntity getOne(UUID id) {
         // TODO Auto-generated method stub

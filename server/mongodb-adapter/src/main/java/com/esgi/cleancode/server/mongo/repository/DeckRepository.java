@@ -1,15 +1,12 @@
 package com.esgi.cleancode.server.mongo.repository;
 
 import java.util.UUID;
+import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.esgi.cleancode.server.mongo.entity.DeckEntity;
-
-import io.vavr.collection.List;
-
-@Repository
-public interface DeckRepository {
+public interface DeckRepository extends MongoRepository<DeckEntity, UUID> {
 
     default DeckEntity getOne(UUID id) {
         // TODO Auto-generated method stub

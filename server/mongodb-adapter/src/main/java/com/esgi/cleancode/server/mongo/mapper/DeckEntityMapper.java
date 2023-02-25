@@ -8,14 +8,14 @@ public interface DeckEntityMapper {
     static Deck toDomain(DeckEntity entity) {
         return Deck.builder()
             .id(entity.getId())
-            .heroes(HeroEntityMapper.listToDomain(entity.getHeroes()))
+            .heroes(HeroEntityMapper.toDomain(entity.getHeroes()))
             .build();
     }
 
     static DeckEntity fromDomain(Deck deck) {
         return DeckEntity.builder()
             .id(deck.getId())
-            .heroes(HeroEntityMapper.listFromDomain(deck.getHeroes()))
+            .heroes(HeroEntityMapper.fromDomain(deck.getHeroes()))
             .build();
     }
 }

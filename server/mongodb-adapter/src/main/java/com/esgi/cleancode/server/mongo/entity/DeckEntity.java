@@ -3,6 +3,7 @@ package com.esgi.cleancode.server.mongo.entity;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import io.vavr.collection.List;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "deck")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class DeckEntity {
     
