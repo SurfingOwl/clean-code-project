@@ -37,8 +37,8 @@ public class DomainConfiguration {
     }
 
     @Bean
-    public BattleViewerApi battleViewerApi(BattlePersistenceSpi spi) {
-        return new BattleViewerService(spi);
+    public BattleViewerApi battleViewerApi(BattlePersistenceSpi spi, HeroFinderService heroFinderService) {
+        return new BattleViewerService(spi, heroFinderService);
     }
 
     @Bean

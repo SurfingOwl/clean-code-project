@@ -3,24 +3,37 @@ package com.esgi.cleancode.server.mongo.adapter;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.ports.server.HeroPersistenceSpi;
+import com.esgi.cleancode.server.mongo.mapper.HeroEntityMapper;
+import com.esgi.cleancode.server.mongo.repository.HeroRepository;
+import com.esgi.cleancode.server.mongo.repository.PlayerRepository;
 
 import io.vavr.collection.List;
 import io.vavr.control.Either;
 import io.vavr.control.Option;
 import lombok.RequiredArgsConstructor;
+import lombok.val;
+
+import static io.vavr.API.Try;
 
 @Service
 @RequiredArgsConstructor
 public class HeroMongoDbAdapter implements HeroPersistenceSpi {
 
+    private final HeroRepository repository;  
+
     @Override
+    @Transactional
     public Either<ApplicationError, Hero> save(Hero o) {
-        // TODO Auto-generated method stub
-        return null;
+        val entity = HeroEntityMapper.fromDomain(o);
+        return Try(() -> repository.save(entity))
+            .toEither()
+            .mapLeft(throwable -> new ApplicationError("Unable to save hero", null, o, throwable))
+            .map(HeroEntityMapper::toDomain);
     }
 
     @Override

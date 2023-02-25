@@ -10,6 +10,6 @@ public interface BattleExecutorApi {
     
     Either<ApplicationError, Battle> engage(Hero attacker, Hero attacked);
 
-    Either<ApplicationError, Battle> attack(Battle battle);
+    Either<ApplicationError, Battle> attack(Battle battle, Hero Attacker);
     
 }

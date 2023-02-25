@@ -5,7 +5,11 @@ import com.esgi.cleancode.domain.functional.model.Player;
 
 public interface PlayerDtoMapper {
     
-    PlayerCreationDto toDto(Player player);
+    static PlayerCreationDto toDto(Player player) { 
+        return null; 
+    }
 
-    Player toDomain(PlayerCreationDto dto);
+    static Player toDomain(PlayerCreationDto dto) {
+        return null; 
+    }
 }

@@ -10,7 +10,7 @@ import static io.vavr.API.Valid;
 
 public interface BattleValidator {
     
-    static Validation<ApplicationError, Battle> validate(Battle battle) {
+    static Validation<ApplicationError, Battle> validateEngage(Battle battle) {
         return battle.getFighters().get()._1().getLevel() > battle.getFighters().get()._2().getLevel()
             ? Valid(battle)
             : Invalid(new ApplicationError("Battle Control", "Hero's level is too high to engage battle", battle, null));

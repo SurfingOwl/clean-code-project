@@ -1,3 +1,9 @@
 package com.esgi.cleancode.client.rest.dto;
 
-public record BattleCreationDto() {  }
+import com.esgi.cleancode.domain.functional.model.Hero;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public record BattleCreationDto(
+    @JsonProperty("") Hero attacker,
+    @JsonProperty("") Hero attacked) {  }

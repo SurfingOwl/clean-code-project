@@ -1,8 +1,9 @@
 package com.esgi.cleancode.domain.functional.service;
 
+import java.util.UUID;
+
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Deck;
-import com.esgi.cleancode.domain.functional.model.Player;
 import com.esgi.cleancode.domain.ports.client.DeckInspectorApi;
 import com.esgi.cleancode.domain.ports.server.DeckPersistenceSpi;
 
@@ -17,10 +18,10 @@ public class DeckInspectorService implements DeckInspectorApi {
     private final DeckPersistenceSpi spi;
 
     @Override
-    public Either<ApplicationError, Deck> inspect(Player player) {
-        return spi.findById(player.getDeck().getId())
-            .onEmpty(() -> log.error("Unable to find player's deck with id {}", player))
-            .toEither(() -> new ApplicationError("Deck Error", null, player, null));
+    public Either<ApplicationError, Deck> find(UUID id) {
+        return spi.findById(id)
+            .onEmpty(() -> log.error("Unable to find player's deck with id {}", id))
+            .toEither(() -> new ApplicationError("Deck Error", null, id, null));
     }
    
 }

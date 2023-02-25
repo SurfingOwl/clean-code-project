@@ -1,10 +1,11 @@
 package com.esgi.cleancode.server.mongo.repository;
 
-import java.util.List;
 import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 import com.esgi.cleancode.server.mongo.entity.BattleEntity;
+
+import io.vavr.collection.List;
 
 @Repository
 public interface BattleRepository {
@@ -25,7 +26,7 @@ public interface BattleRepository {
         return null;
     }
 
-    default <S extends BattleEntity> List<S> saveAll(Iterable<S> entities) {
+    default <S extends BattleEntity> List<S> saveAll(List<S> entities) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -34,7 +35,7 @@ public interface BattleRepository {
         // TODO Auto-generated method stub
     }
     
-    default void deleteInBatch(Iterable<BattleEntity> entities) {
+    default void deleteInBatch(List<BattleEntity> entities) {
         // TODO Auto-generated method stub 
     }
 }

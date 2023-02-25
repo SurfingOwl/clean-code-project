@@ -6,7 +6,6 @@ import static io.vavr.API.Valid;
 import static io.vavr.API.Invalid;
 
 import com.esgi.cleancode.domain.ApplicationError;
-import com.esgi.cleancode.domain.functional.model.Deck;
 import com.esgi.cleancode.domain.functional.model.Pack;
 import com.esgi.cleancode.domain.functional.model.Player;
 
