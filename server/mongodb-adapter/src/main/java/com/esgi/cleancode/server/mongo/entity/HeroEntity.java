@@ -3,6 +3,7 @@ package com.esgi.cleancode.server.mongo.entity;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 import com.esgi.cleancode.domain.functional.enums.SpecialityEnum;
@@ -20,6 +21,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "hero")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class HeroEntity {
     

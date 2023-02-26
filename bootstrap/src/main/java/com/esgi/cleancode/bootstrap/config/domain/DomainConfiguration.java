@@ -32,16 +32,6 @@ public class DomainConfiguration {
     // API CONTROLERS
 
     @Bean
-    public BattleExecutorApi battleExecutorApi(BattlePersistenceSpi spi) {
-        return new BattleExecutorService(spi);
-    }
-
-    @Bean
-    public BattleViewerApi battleViewerApi(BattlePersistenceSpi spi, HeroFinderService heroFinderService) {
-        return new BattleViewerService(spi, heroFinderService);
-    }
-
-    @Bean
     public DeckAppenderApi deckAppenderApi(DeckPersistenceSpi spi) {
         return new DeckAppenderService(spi);
     }
@@ -62,11 +52,6 @@ public class DomainConfiguration {
     }
 
     @Bean
-    public PackOpenerApi packOpenerApi(HeroFinderService heroFinderService, DeckAppenderService deckAppenderService, PlayerCreatorService playerCreatorService) {
-        return new PackOpenerService(heroFinderService, deckAppenderService, playerCreatorService);
-    }
-
-    @Bean
     public PlayerCreatorApi playerCreatorApi(PlayerPersistenceSpi spi) {
         return new PlayerCreatorService(spi);
     }
@@ -75,4 +60,20 @@ public class DomainConfiguration {
     public PlayerFinderApi playerFinderApi(PlayerPersistenceSpi spi) {
         return new PlayerFinderService(spi);
     }
+
+    @Bean
+    public BattleExecutorApi battleExecutorApi(BattlePersistenceSpi spi) {
+        return new BattleExecutorService(spi);
+    }
+
+    @Bean
+    public BattleViewerApi battleViewerApi(BattlePersistenceSpi battleSpi, HeroPersistenceSpi heroSpi) {
+        return new BattleViewerService(battleSpi, heroSpi);
+    }
+
+    @Bean
+    public PackOpenerApi packOpenerApi(HeroFinderApi heroFinder, DeckAppenderApi deckAppender, PlayerCreatorApi playerCreator) {
+        return new PackOpenerService(heroFinder, deckAppender, playerCreator);
+    }
+
 }

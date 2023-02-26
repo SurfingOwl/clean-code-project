@@ -3,14 +3,12 @@ package com.esgi.cleancode.server.mongo.adapter;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.ports.server.HeroPersistenceSpi;
 import com.esgi.cleancode.server.mongo.mapper.HeroEntityMapper;
 import com.esgi.cleancode.server.mongo.repository.HeroRepository;
-import com.esgi.cleancode.server.mongo.repository.PlayerRepository;
 
 import io.vavr.collection.List;
 import io.vavr.control.Either;
@@ -27,7 +25,21 @@ public class HeroMongoDbAdapter implements HeroPersistenceSpi {
     private final HeroRepository repository;  
 
     @Override
-    @Transactional
+    public Option<Hero> findById(UUID id) {
+        return Try(() -> repository.findById(id))
+        .map(entity -> HeroEntityMapper.toDomain(entity.get()))
+        .toOption();
+    }
+
+    @Override
+    public Option<List<Hero>> findAll() {
+        return Try(() -> repository.findAll())
+            .map(list -> List.ofAll(list))
+            .map(HeroEntityMapper::toDomain)
+            .toOption();
+    }
+
+    @Override
     public Either<ApplicationError, Hero> save(Hero o) {
         val entity = HeroEntityMapper.fromDomain(o);
         return Try(() -> repository.save(entity))
@@ -38,18 +50,6 @@ public class HeroMongoDbAdapter implements HeroPersistenceSpi {
 
     @Override
     public Either<ApplicationError, List<Hero>> saveInBatch(List<Hero> oList) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Option<Hero> findById(UUID id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Option<List<Hero>> findAll() {
         // TODO Auto-generated method stub
         return null;
     }

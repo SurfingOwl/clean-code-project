@@ -6,12 +6,14 @@ import lombok.EqualsAndHashCode.Include;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "player")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class PlayerEntity {
     

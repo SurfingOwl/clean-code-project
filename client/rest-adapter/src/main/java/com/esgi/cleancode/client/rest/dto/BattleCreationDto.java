@@ -5,5 +5,5 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public record BattleCreationDto(
-    @JsonProperty("") Hero attacker,
-    @JsonProperty("") Hero attacked) {  }
+    @JsonProperty("attacker") Hero attacker,
+    @JsonProperty("attacked") Hero attacked) {  }
