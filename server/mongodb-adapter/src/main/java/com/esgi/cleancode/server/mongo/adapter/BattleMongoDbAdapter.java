@@ -54,15 +54,4 @@ public class BattleMongoDbAdapter implements BattlePersistenceSpi {
         return null;
     }
 
-    @Override
-    public Either<ApplicationError, Void> deleteById(UUID id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Either<ApplicationError, Void> deleteInBatch(List<UUID> ids) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 }

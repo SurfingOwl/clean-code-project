@@ -1,18 +1,12 @@
 package com.esgi.cleancode.client.rest.mapper;
 
-import com.esgi.cleancode.client.rest.dto.HeroCreationDto;
 import com.esgi.cleancode.client.rest.dto.HeroDto;
-import com.esgi.cleancode.domain.functional.factory.HeroFactory;
 import com.esgi.cleancode.domain.functional.model.Hero;
 
 import io.vavr.collection.List;
 
 public interface HeroDtoMapper {
     
-    static Hero toDomain(HeroCreationDto dto) {
-    return HeroFactory.createHero(dto.name(), dto.rarity(), dto.speciality());
-    }
-
     static HeroDto toDto(Hero hero) {
         return new HeroDto(
             hero.getId(), 

@@ -1,11 +1,14 @@
 package com.esgi.cleancode.server.mongo.entity;
 
+import java.util.List;
 import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-import io.vavr.collection.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -19,13 +22,15 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "deck")
+@Entity
+@Table(name = "deck")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class DeckEntity {
     
     @Id
     @Include
     private UUID id;
-
+    
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<HeroEntity> heroes;
 }

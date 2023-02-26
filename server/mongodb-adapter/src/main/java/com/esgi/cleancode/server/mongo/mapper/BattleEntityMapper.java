@@ -10,7 +10,7 @@ public interface BattleEntityMapper {
     static Battle toDomain(BattleEntity entity) {
         return Battle.builder()
             .id(entity.getId())
-            .fighters(HashMap.of(entity.getFighters().get()).bimap(HeroEntityMapper::toDomain, HeroEntityMapper::toDomain))
+            .fighters(HashMap.of(HashMap.ofAll(entity.getFighters()).get()).bimap(HeroEntityMapper::toDomain, HeroEntityMapper::toDomain))
             .status(entity.getStatus())
             .build();
     }
@@ -22,7 +22,7 @@ public interface BattleEntityMapper {
     static BattleEntity fromDomain(Battle battle) {
         return BattleEntity.builder()
         .id(battle.getId())
-        .fighters(HashMap.of(battle.getFighters().get()).bimap(HeroEntityMapper::fromDomain, HeroEntityMapper::fromDomain))
+        .fighters(HashMap.of(battle.getFighters().get()).bimap(HeroEntityMapper::fromDomain, HeroEntityMapper::fromDomain).toJavaMap())
         .status(battle.getStatus())
         .build();
     }

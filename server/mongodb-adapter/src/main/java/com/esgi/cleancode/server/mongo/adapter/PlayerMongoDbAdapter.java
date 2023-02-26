@@ -3,6 +3,7 @@ package com.esgi.cleancode.server.mongo.adapter;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Player;
@@ -53,16 +54,4 @@ public class PlayerMongoDbAdapter implements PlayerPersistenceSpi {
         // TODO Auto-generated method stub
         return null;
     }
-
-    @Override
-    public Either<ApplicationError, Void> deleteById(UUID id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Either<ApplicationError, Void> deleteInBatch(List<UUID> ids) {
-        // TODO Auto-generated method stub
-        return null;
-    }    
 }

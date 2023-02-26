@@ -20,7 +20,7 @@ public class DeckAppenderService implements DeckAppenderApi {
         return spi.save(
             Deck.builder()
             .id(deck.getId())
-            .heroes(List.ofAll(deck.getHeroes().appendAll(heroes)))
+            .heroes(deck.getHeroes().appendAll(heroes))
             .build()
         );
     }

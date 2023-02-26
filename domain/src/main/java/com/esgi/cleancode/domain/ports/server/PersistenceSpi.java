@@ -15,9 +15,4 @@ public interface PersistenceSpi<T, ID> {
     Option<T> findById(ID id);
 
     Option<List<T>> findAll();
-
-    Either<ApplicationError, Void> deleteById(ID id);
-
-    Either<ApplicationError, Void> deleteInBatch(List<ID> ids);
-
 }

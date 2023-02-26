@@ -16,8 +16,10 @@ import com.esgi.cleancode.domain.ports.client.PlayerCreatorApi;
 import io.vavr.collection.List;
 import io.vavr.control.Either;
 import lombok.AllArgsConstructor;
+import lombok.val;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 @Slf4j
@@ -41,15 +43,16 @@ public class PackOpenerService implements PackOpenerApi {
             .peekLeft(error -> log.error("Balance {} is too low to purchase pack {}", player.getBalance(), pack.getPrice()));
     }
 
-    // GROS PB DE LOGIQUE DANS LE SERVICE -> A REVOIR 
     private List<Hero> getHeroesFromPack(Pack pack) {
-        List<Hero> heroes = List.of();
-        var allHeroes = heroFinderService.search().peekLeft(error -> log.error("No heroes found: {}", error)).get();
+        ArrayList<Hero> heroes = new ArrayList<>();
+        val allHeroes = heroFinderService.search().peekLeft(error -> log.error("No heroes found: {}", error)).get();        
         
         for (int i = 0; i < pack.getCardNumber(); i++) {
             
-            var hero = selectRandomHeroFromList(allHeroes);
-            heroes.push(
+            var relevantHeroes = allHeroes.filter(hero -> hero.getRarity().equals(getDropChances(pack)));
+            var hero = selectRandomHeroFromList(relevantHeroes);
+
+            heroes.add(
                 HeroFactory.fromHero(
                     hero.getId(),
                     hero.getName(),
@@ -58,12 +61,12 @@ public class PackOpenerService implements PackOpenerApi {
                     hero.getArmor(),
                     hero.getExperiencePoints(),
                     hero.getLevel(),
-                    getDropChances(pack),
+                    hero.getRarity(),
                     hero.getSpeciality())        
             );
         }
         
-        return heroes;
+        return List.ofAll(heroes);
     }
     
     private RarityEnum getDropChances(Pack pack) {

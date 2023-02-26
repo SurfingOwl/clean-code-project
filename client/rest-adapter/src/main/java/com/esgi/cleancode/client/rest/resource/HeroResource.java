@@ -41,7 +41,7 @@ public class HeroResource {
 
     @PostMapping
     ResponseEntity<Object> createHero(@RequestBody HeroCreationDto heroCreationDto) {
-        return heroCreatorApi.create(heroCreationDto.name(), heroCreationDto.rarity(), heroCreationDto.speciality())
+        return heroCreatorApi.createAll(heroCreationDto.name(), heroCreationDto.speciality())
             .map(HeroDtoMapper::toDto)
             .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
     }

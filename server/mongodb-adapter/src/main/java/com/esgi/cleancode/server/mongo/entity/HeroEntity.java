@@ -1,9 +1,12 @@
 package com.esgi.cleancode.server.mongo.entity;
 
 import java.util.UUID;
+import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 import com.esgi.cleancode.domain.functional.enums.SpecialityEnum;
@@ -21,7 +24,8 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "hero")
+@Entity
+@Table(name = "hero")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class HeroEntity {
     

@@ -5,15 +5,19 @@ import lombok.EqualsAndHashCode.Include;
 
 import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "player")
+@Entity
+@Table(name = "player")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class PlayerEntity {
     
@@ -25,5 +29,6 @@ public class PlayerEntity {
 
     private int balance;
     
+    @OneToOne(cascade = CascadeType.ALL)
     private DeckEntity deck;
 }
