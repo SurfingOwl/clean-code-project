@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/Hero")
+@RequestMapping("/hero")
 public class HeroResource {
     
     private final HeroCreatorApi heroCreatorApi;

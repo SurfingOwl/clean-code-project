@@ -70,6 +70,8 @@ public class HeroFactory {
                     .healthPoint(applyRarityBonus(800, rarity))
                     .power(applyRarityBonus(200, rarity))
                     .armor(applyRarityBonus(5, rarity))
+                    .rarity(rarity)
+                    .speciality(speciality)
                     .build();
             case MAGE:
                 return Mage.builder()
@@ -77,6 +79,8 @@ public class HeroFactory {
                     .healthPoint(applyRarityBonus(700, rarity))
                     .power(applyRarityBonus(150, rarity))
                     .armor(applyRarityBonus(10, rarity))
+                    .rarity(rarity)
+                    .speciality(speciality)
                     .build();
             case TANK:
                 return Tank.builder()
@@ -84,6 +88,8 @@ public class HeroFactory {
                     .healthPoint(applyRarityBonus(1000, rarity))
                     .power(applyRarityBonus(100, rarity))
                     .armor(applyRarityBonus(20, rarity))
+                    .rarity(rarity)
+                    .speciality(speciality)
                     .build();
             default:
                 return null; // TODO NOT CLEAN
