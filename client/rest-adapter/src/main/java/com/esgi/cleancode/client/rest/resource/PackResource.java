@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.esgi.cleancode.client.rest.dto.PackOpenerDto;
 import com.esgi.cleancode.client.rest.mapper.PackDtoMapper;
+import com.esgi.cleancode.client.rest.mapper.PlayerDtoMapper;
 import com.esgi.cleancode.domain.ports.client.PackOpenerApi;
 import com.esgi.cleancode.domain.ports.client.PlayerFinderApi;
 
@@ -30,7 +31,7 @@ public class PackResource {
         return packOpenerApi
             .open(playerFinderApi.find(UUID.fromString(playerId)).get(),
             PackDtoMapper.toDomain(packOpenerDto))
-            .map(PackDtoMapper::toDto)
+            .map(PlayerDtoMapper::toDto)
             .fold(ResponseEntity.badRequest()::body, ResponseEntity::ok);
     }
     

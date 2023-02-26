@@ -3,6 +3,7 @@ package com.esgi.cleancode.domain.functional.service;
 import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
 import com.esgi.cleancode.domain.functional.factory.HeroFactory;
+import com.esgi.cleancode.domain.functional.model.Deck;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.model.Pack;
 import com.esgi.cleancode.domain.functional.model.Player;
@@ -30,8 +31,8 @@ public class PackOpenerService implements PackOpenerApi {
     @Override
     public Either<ApplicationError, Player> open(Player player, Pack pack) {
         return verifyPlayerBalance(player, pack)
-            .peek(responsePlayer -> calculateNewPlayerBalance(responsePlayer, pack))
-            .peek(responsePlayer -> deckAppenderService.add(responsePlayer.getDeck(), getHeroesFromPack(pack)));
+            .map(responsePlayer -> appendNewHeroes(responsePlayer.getDeck(), getHeroesFromPack(pack)))
+            .flatMap(responsePlayer -> calculateNewPlayerBalance(player, pack));
     }
 
     private Either<ApplicationError, Player> verifyPlayerBalance(Player player, Pack pack) {
@@ -40,6 +41,7 @@ public class PackOpenerService implements PackOpenerApi {
             .peekLeft(error -> log.error("Balance {} is too low to purchase pack {}", player.getBalance(), pack.getPrice()));
     }
 
+    // GROS PB DE LOGIQUE DANS LE SERVICE -> A REVOIR 
     private List<Hero> getHeroesFromPack(Pack pack) {
         List<Hero> heroes = List.of();
         var allHeroes = heroFinderService.search().peekLeft(error -> log.error("No heroes found: {}", error)).get();
@@ -88,7 +90,11 @@ public class PackOpenerService implements PackOpenerApi {
 
     private Hero selectRandomHeroFromList(List<Hero> heroes) {
         Random randomizer  = new Random();
-        return heroes.get(randomizer.nextInt());
+        return heroes.get(randomizer.nextInt(heroes.size()));
+    }
+
+    private Either<ApplicationError, Deck> appendNewHeroes(Deck deck, List<Hero> heroes) {
+        return deckAppenderService.add(deck, heroes);
     }
 
     private Either<ApplicationError, Player> calculateNewPlayerBalance(Player player, Pack pack) {

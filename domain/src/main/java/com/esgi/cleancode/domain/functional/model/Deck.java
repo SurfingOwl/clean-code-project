@@ -17,6 +17,7 @@ public class Deck {
 
     @Default
     UUID id = UUID.randomUUID();
-    List<Hero> heroes;
+    @Default
+    List<Hero> heroes = List.of();
     
 }
