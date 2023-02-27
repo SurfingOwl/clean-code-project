@@ -8,6 +8,7 @@ import com.esgi.cleancode.domain.functional.model.Deck;
 import com.esgi.cleancode.domain.ports.server.DeckPersistenceSpi;
 import com.esgi.cleancode.server.mongo.mapper.DeckEntityMapper;
 import com.esgi.cleancode.server.mongo.repository.DeckRepository;
+import com.esgi.cleancode.domain.ApplicationError;
 
 import io.vavr.collection.List;
 import io.vavr.control.Either;
