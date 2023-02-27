@@ -8,6 +8,7 @@ import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Player;
 import com.esgi.cleancode.domain.ports.server.PlayerPersistenceSpi;
 import com.esgi.cleancode.server.mongo.mapper.PlayerEntityMapper;
+import com.esgi.cleancode.server.mongo.repository.DeckRepository;
 import com.esgi.cleancode.server.mongo.repository.PlayerRepository;
 
 import io.vavr.collection.List;
@@ -23,6 +24,7 @@ import static io.vavr.API.Try;
 public class PlayerMongoDbAdapter implements PlayerPersistenceSpi {
 
     private final PlayerRepository repository;
+    private final DeckRepository deckRepo;
 
     @Override
     public Option<Player> findById(UUID id) {
@@ -41,7 +43,7 @@ public class PlayerMongoDbAdapter implements PlayerPersistenceSpi {
 
     @Override
     public Either<ApplicationError, Player> save(Player o) {
-        val entity = PlayerEntityMapper.fromDomain(o);
+        val entity = PlayerEntityMapper.fromDomain(o, deckRepo);
         return Try(() -> repository.save(entity))
             .toEither()
             .mapLeft(throwable -> new ApplicationError("Unable to save player", null, o, throwable))

@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "8566908d-d3d9-4829-90fa-2585de5ef059",
+		"name": "[ESGI] CleanCodeApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16214538"
+	},
+	"item": [
+		{
+			"name": "[POST] CREATE HERO",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"test3\",\r\n    \"speciality\": \"TANK\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/hero",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] CREATE PLAYER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"SurgingChicken\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/player",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] OPEN PACK",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"packRarity\": \"SILVER\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/pack/e36169a5-1925-4711-bec0-d3a98905185a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pack",
+						"e36169a5-1925-4711-bec0-d3a98905185a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] ALL HEROES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/hero",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] ALL PLAYERS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/player",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] PLAYER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/player/e36169a5-1925-4711-bec0-d3a98905185a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"player",
+						"e36169a5-1925-4711-bec0-d3a98905185a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] DECK",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deck/ae4a1e67-ee3e-442f-97ac-d7445c1bb157",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deck",
+						"ae4a1e67-ee3e-442f-97ac-d7445c1bb157"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] HERO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/hero/c07c5457-4af0-4ed7-8031-c86d1d048a83",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hero",
+						"c07c5457-4af0-4ed7-8031-c86d1d048a83"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

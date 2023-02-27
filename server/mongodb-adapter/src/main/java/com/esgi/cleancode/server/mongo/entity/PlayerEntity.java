@@ -1,13 +1,12 @@
 package com.esgi.cleancode.server.mongo.entity;
 
 import lombok.*;
-import lombok.EqualsAndHashCode.Include;
 
 import java.util.UUID;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,18 +16,18 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "player")
+@Table(name = "players")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class PlayerEntity {
     
     @Id
-    @Include
     private UUID id;
-
+    
     private String name;
-
+    
     private int balance;
     
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "deck_id")
     private DeckEntity deck;
 }

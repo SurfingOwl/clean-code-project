@@ -1,11 +1,12 @@
 package com.esgi.cleancode.server.mongo.entity;
 
 import java.util.UUID;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.esgi.cleancode.domain.functional.enums.RarityEnum;
@@ -14,7 +15,6 @@ import com.esgi.cleancode.domain.functional.enums.SpecialityEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.EqualsAndHashCode.Include;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,27 +25,30 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "hero")
+@Table(name = "heroes")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class HeroEntity {
     
     @Id
-    @Include
     private UUID id;
-
+    
     private String name;
-
+    
+    @Column(name = "health_point")
     private double healthPoint;
-
+    
     private double power;
-
+    
     private double armor;
-
+    
+    @Column(name = "experience_points")
     private int experiencePoints;
-
+    
     private int level;
-
+    
+    @Enumerated(EnumType.STRING)
     private RarityEnum rarity;
-
+    
+    @Enumerated(EnumType.STRING)
     private SpecialityEnum speciality;
 }
