@@ -3,10 +3,7 @@ package com.esgi.cleancode.server.mongo.adapter;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.esgi.cleancode.domain.ApplicationError;
 import com.esgi.cleancode.domain.functional.model.Deck;
 import com.esgi.cleancode.domain.ports.server.DeckPersistenceSpi;
 import com.esgi.cleancode.server.mongo.mapper.DeckEntityMapper;
