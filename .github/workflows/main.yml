@@ -44,7 +44,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/clockbox:latest }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
 
   test:
     runs-on: ubuntu-latest
