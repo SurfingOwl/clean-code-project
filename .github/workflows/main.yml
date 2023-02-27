@@ -40,7 +40,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/clean-code-ci-cd:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{ GITHUB_REPOSITORY }}:latest
 
   test:
     runs-on: ubuntu-latest
